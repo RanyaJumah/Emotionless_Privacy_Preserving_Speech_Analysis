@@ -3,15 +3,15 @@ import time
 
 from speech_tools import *
 
-dataset = 'vcc2018'
-src_speaker = 'VCC2SF3'
-trg_speaker = 'VCC2TM1'
+dataset = 'RAVDESS'
+src_speaker = 'Emotion'
+trg_speaker = 'Neutral'
 
 data_dir = os.path.join('datasets', dataset)
 exp_dir = os.path.join('experiments', dataset)
 
-train_A_dir = os.path.join(data_dir, 'vcc2018_training', src_speaker)
-train_B_dir = os.path.join(data_dir, 'vcc2018_training', trg_speaker)
+train_A_dir = os.path.join(data_dir, 'training', src_speaker)
+train_B_dir = os.path.join(data_dir, 'training', trg_speaker)
 exp_A_dir = os.path.join(exp_dir, src_speaker)
 exp_B_dir = os.path.join(exp_dir, trg_speaker)
 
