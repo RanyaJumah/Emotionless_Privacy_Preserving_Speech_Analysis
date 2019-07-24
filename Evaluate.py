@@ -2,7 +2,7 @@ import os
 import glob
 import wandb
 from models.cyclegan_vc2 import CycleGAN2
-from speech_tools import *
+from Preprocess.speech_tools import *
 
 wandb.init(project="my-project", sync_tensorboard=True)
 
