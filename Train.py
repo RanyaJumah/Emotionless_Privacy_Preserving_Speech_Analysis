@@ -7,9 +7,9 @@ from speech_tools import load_pickle, sample_train_data
 
 np.random.seed(300)
 
-dataset = 'vcc2018'
-src_speaker = 'VCC2SF3'
-trg_speaker = 'VCC2TM1'
+dataset = 'RAVDESS'
+src_speaker = 'Emotion'
+trg_speaker = 'Neutral'
 model_name = 'cyclegan_vc2_two_step'
 os.makedirs(os.path.join('experiments', dataset, model_name, 'checkpoints'), exist_ok=True)
 log_dir = os.path.join('logs', '{}_{}'.format(dataset, model_name))
@@ -18,8 +18,8 @@ os.makedirs(log_dir, exist_ok=True)
 data_dir = os.path.join('datasets', dataset)
 exp_dir = os.path.join('experiments', dataset)
 
-train_A_dir = os.path.join(data_dir, 'vcc2018_training', src_speaker)
-train_B_dir = os.path.join(data_dir, 'vcc2018_training', trg_speaker)
+train_A_dir = os.path.join(data_dir, 'training', src_speaker)
+train_B_dir = os.path.join(data_dir, 'training', trg_speaker)
 exp_A_dir = os.path.join(exp_dir, src_speaker)
 exp_B_dir = os.path.join(exp_dir, trg_speaker)
 
@@ -44,6 +44,11 @@ coded_sps_B_norm, coded_sps_B_mean, coded_sps_B_std, log_f0s_mean_B, log_f0s_std
     os.path.join(exp_B_dir, 'cache{}.p'.format(num_mcep)))
 
 model = CycleGAN2(num_features=num_mcep, batch_size=mini_batch_size, log_dir=log_dir)
+
+model.load(
+    filepath=os.path.join('experiments', dataset, model_name, 'checkpoints', '{}_7500.ckpt'.format(model_name)))
+
+
 
 iteration = 1
 while iteration <= num_iterations:
@@ -80,4 +85,5 @@ while iteration <= num_iterations:
                 time_elapsed // 3600, (time_elapsed % 3600 // 60), (time_elapsed % 60 // 1)))
 
         iteration += 1
+
 
