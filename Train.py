@@ -2,7 +2,7 @@ import os
 import time
 import numpy as np
 
-from models.cyclegan_vc2 import CycleGAN2
+from Models.cyclegan_vc2 import CycleGAN2
 from Preprocess.speech_tools import load_pickle, sample_train_data
 
 np.random.seed(300)
