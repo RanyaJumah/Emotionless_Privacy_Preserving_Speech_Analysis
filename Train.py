@@ -3,7 +3,7 @@ import time
 import numpy as np
 
 from models.cyclegan_vc2 import CycleGAN2
-from speech_tools import load_pickle, sample_train_data
+from Preprocess.speech_tools import load_pickle, sample_train_data
 
 np.random.seed(300)
 
